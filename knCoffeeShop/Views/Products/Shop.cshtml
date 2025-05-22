@@ -1,0 +1,28 @@
+﻿@model IEnumerable<knCoffeeShop.Models.Product> // Khai báo rằng View này sẽ nhận một tập hợp các đối tượng Product
+
+@{
+    ViewData["Title"] = "Coffee Shop"; // Đặt tiêu đề cho trang web
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-4">Welcome to knCoffeeShop!</h1>
+    <p>Our delicious coffee selection:</p>
+</div>
+
+<div class="row">
+    @foreach (var product in Model) // Duyệt qua từng sản phẩm trong Model
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 220px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text text-muted flex-grow-1">@product.Detail</p>
+                    <p class="card-text"><strong>@product.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</strong></p> @* Định dạng giá thành tiền tệ Việt Nam *@
+
+                    <a asp-controller="Products" asp-action="Detail" asp-route-id="@product.Id" class="btn btn-primary mt-auto">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
