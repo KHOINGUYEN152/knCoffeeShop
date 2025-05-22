@@ -1,25 +1,24 @@
-﻿using knCoffeeShop.Models.Interfaces;
+﻿using knCoffeeShop.Data;
+using knCoffeeShop.Models.Interfaces;
 using knCoffeeShop.Models.Services;
-// ... (các lệnh using khác)
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// >>> THÊM ĐOẠN CODE NÀY VÀO ĐÂY <<<
+// Đăng ký ProductRepository và IProductRepository
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-// >>> HẾT ĐOẠN CODE CẦN THÊM <<<
+
+// Đăng ký CoffeeShopDbContext với chuỗi kết nối
+builder.Services.AddDbContext<CoffeeShopDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
 
 var app = builder.Build();
-
-// ... (phần còn lại của Program.cs)
-
 
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
