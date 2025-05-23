@@ -1,8 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang Chủ Coffee Shop"; 
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="hero-section">
+    <div class="hero-overlay"></div> 
+    <div class="hero-content">
+        <h1 class="display-4">Chào mừng đến với Coffee Shop!</h1> 
+        <p class="lead">
+            Khám phá những hương vị cà phê tuyệt vời nhất và tận hưởng không gian thư giãn. 
+        </p>
+        <a asp-controller="Products" asp-action="Shop" class="btn btn-primary btn-lg">
+            Xem sản phẩm của chúng tôi 
+        </a>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h3>Về chúng tôi</h3> 
+            <p class="lead">
+                Chúng tôi tự hào mang đến những hạt cà phê chất lượng cao nhất từ khắp nơi trên thế giới,
+                được rang xay tỉ mỉ để tạo ra những ly cà phê hoàn hảo.
+            </p>
+            <p>
+                Hãy đến và trải nghiệm không gian ấm cúng cùng những món đồ uống đặc biệt tại Coffee Shop.
+            </p>
+        </div>
+    </div>
 </div>
